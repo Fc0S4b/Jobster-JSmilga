@@ -1,8 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Landing from './pages/Landing';
 function App() {
-  return <div>Jobster</div>;
+  return (
+    <div>
+      <Landing />
+    </div>
+  );
 }
 
 export default App;
