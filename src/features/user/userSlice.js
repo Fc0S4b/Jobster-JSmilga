@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   isLoading: false,
-  user: getUserFromLocalStorage,
+  user: getUserFromLocalStorage(),
 };
 
 export const registerUser = createAsyncThunk(
