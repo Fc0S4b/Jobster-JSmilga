@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { FormRow, FormRowSelect } from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import { useSelector, useDispatch, createDispatchHook } from 'react-redux';
@@ -21,6 +22,7 @@ const AddJob = () => {
     isEditing,
     editJobId,
   } = useSelector((store) => store.job);
+  const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -31,6 +33,15 @@ const AddJob = () => {
     }
     dispatch(createJob({ position, company, jobLocation, jobType, status }));
   };
+
+  useEffect(() => {
+    dispatch(
+      handleChange({
+        name: 'jobLocation',
+        value: user.location,
+      })
+    );
+  }, []);
 
   const handleJobInput = (e) => {
     const name = e.target.name;
